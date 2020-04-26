@@ -21,6 +21,7 @@ obniz.switch.onchange = function (state) {
 (async function() {
     await obniz.ble.initWait();
     //start ble scan
+    obniz.ble.scan.start({ duration: 30 });
     obniz.ble.scan.onfind = function(peripheral){
         console.log(peripheral.localName)
         obniz.display.clear();
