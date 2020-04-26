@@ -27,11 +27,20 @@ obniz.display.print("番台さんかっこいい");
 (async function() {
     await obniz.ble.initWait();
     //start ble scan
-    await obniz.ble.scan.startWait({ duration: 30 });
+    await obniz.ble.scan.start();
     obniz.ble.scan.onfind = function(peripheral){
-        console.log(peripheral.localName)
-        obniz.display.clear();
-        obniz.display.print(peripheral.localName);
+        const beacon = peripheral.iBeacon;
+        const rssi = beacon.rssi;
+        if(rssi > -70) {
+            obniz.display.clear();
+            obniz.display.print("beacon is immediate");
+        }else if(rssi <= -71 && rssi > -80) {
+            obniz.display.clear();
+            obniz.display.print("beacon is near");
+        }else {
+            obniz.display.clear();
+            obniz.display.print("beacon is far");
+        }
     };
     //finish ble scan
     obniz.ble.scan.onfinish = async function(peripherals, error){
