@@ -24,29 +24,28 @@ obniz.display.print("番台さんかっこいい");
 
 4
 00:00:40,000 --> 00:01:20,000
-(async function() {
-    console.log("awaitできてないかも");
-    await obniz.ble.initWait();
-    console.log("ここは問題なし");
-    //start ble scan
-    await obniz.ble.scan.start();
-    obniz.ble.scan.onfind = function(peripheral){
-        const beacon = peripheral.iBeacon;
-        const rssi = beacon.rssi;
-        if(rssi > -70) {
-            obniz.display.clear();
-            obniz.display.print("beacon is immediate");
-        }else if(rssi <= -71 && rssi > -80) {
-            obniz.display.clear();
-            obniz.display.print("beacon is near");
-        }else {
-            obniz.display.clear();
-            obniz.display.print("beacon is far");
-        }
-    };
-    //finish ble scan
-    obniz.ble.scan.onfinish = function(peripherals, error){
-        console.log("scan timeout!")
-    };
-})
+console.log("awaitできてないかも");
+await obniz.ble.initWait();
+console.log("ここは問題なし");
+//start ble scan
+await obniz.ble.scan.start();
+obniz.ble.scan.onfind = function(peripheral){
+    const beacon = peripheral.iBeacon;
+    const rssi = beacon.rssi;
+    if(rssi > -70) {
+        obniz.display.clear();
+        obniz.display.print("beacon is immediate");
+    }else if(rssi <= -71 && rssi > -80) {
+        obniz.display.clear();
+        obniz.display.print("beacon is near");
+    }else {
+        obniz.display.clear();
+        obniz.display.print("beacon is far");
+    }
+};
+//finish ble scan
+obniz.ble.scan.onfinish = function(peripherals, error){
+    console.log("scan timeout!")
+};
+
 
