@@ -28,9 +28,10 @@ console.log("awaitできてないかも");
 obniz.ble.initWait();
 console.log("ここは問題なし");
 //start ble scan
-obniz.ble.scan.start();
+obniz.ble.scan.start({duration: 20});
 obniz.ble.scan.onfind = function(peripheral){
-    const beacon = peripheral.iBeacon;
+    if(peripheral != null) {
+        const beacon = peripheral.iBeacon;
     const rssi = beacon.rssi;
     if(rssi > -70) {
         obniz.display.clear();
@@ -41,6 +42,7 @@ obniz.ble.scan.onfind = function(peripheral){
     }else {
         obniz.display.clear();
         obniz.display.print("beacon is far");
+    }
     }
 };
 //finish ble scan
