@@ -23,7 +23,7 @@ obniz.display.clear();
 obniz.display.print("番台さんかっこいい");
 
 4
-00:00:40,000 --> 00:00:47,000
+00:00:40,000 --> 00:01:20,000
 (async function() {
     await obniz.ble.initWait();
     //start ble scan
