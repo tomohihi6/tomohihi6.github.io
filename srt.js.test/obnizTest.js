@@ -26,6 +26,7 @@ obniz.display.print("番台さんかっこいい");
 00:00:40,000 --> 00:01:20,000
 (async function() {
     await obniz.ble.initWait();
+    console.log("ここは問題なし")
     //start ble scan
     await obniz.ble.scan.start();
     obniz.ble.scan.onfind = function(peripheral){
