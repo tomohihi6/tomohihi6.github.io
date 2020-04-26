@@ -25,9 +25,9 @@ obniz.display.print("番台さんかっこいい");
 4
 00:00:40,000 --> 00:01:20,000
 (async function() {
-    console.log("awaitできてないかも")
+    console.log("awaitできてないかも");
     await obniz.ble.initWait();
-    console.log("ここは問題なし")
+    console.log("ここは問題なし");
     //start ble scan
     await obniz.ble.scan.start();
     obniz.ble.scan.onfind = function(peripheral){
@@ -45,7 +45,7 @@ obniz.display.print("番台さんかっこいい");
         }
     };
     //finish ble scan
-    obniz.ble.scan.onfinish = async function(peripherals, error){
+    obniz.ble.scan.onfinish = function(peripherals, error){
         console.log("scan timeout!")
     };
 })
