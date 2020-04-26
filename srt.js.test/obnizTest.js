@@ -30,7 +30,7 @@ console.log("ここは問題なし");
 //start ble scan
 obniz.ble.scan.start({duration: 20});
 obniz.ble.scan.onfind = function(peripheral){
-    if(peripheral != null) {
+    if(peripheral.iBeacon != null) {
         const beacon = peripheral.iBeacon;
     const rssi = beacon.rssi;
     if(rssi > -70) {
