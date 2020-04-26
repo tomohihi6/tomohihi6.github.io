@@ -23,31 +23,40 @@ obniz.display.clear();
 obniz.display.print("番台さんかっこいい");
 
 4
-00:00:40,000 --> 00:01:20,000
+00:00:40,000 --> 00:01:19,000
 console.log("awaitできてないかも");
 obniz.ble.initWait();
 console.log("ここは問題なし");
 //start ble scan
-obniz.ble.scan.start({duration: 20});
+obniz.ble.scan.start();
 obniz.ble.scan.onfind = function(peripheral){
     if(peripheral.iBeacon != null) {
         const beacon = peripheral.iBeacon;
-    const rssi = beacon.rssi;
-    if(rssi > -70) {
-        obniz.display.clear();
-        obniz.display.print("beacon is immediate");
-    }else if(rssi <= -71 && rssi > -80) {
-        obniz.display.clear();
-        obniz.display.print("beacon is near");
-    }else {
-        obniz.display.clear();
-        obniz.display.print("beacon is far");
-    }
+        const rssi = beacon.rssi;
+        if(rssi > -70) {
+            obniz.display.clear();
+            obniz.display.print("beacon is immediate");
+        }else if(rssi <= -71 && rssi > -80) {
+            obniz.display.clear();
+            obniz.display.print("beacon is near");
+        }else {
+            obniz.display.clear();
+            obniz.display.print("beacon is far");
+        }
+        obniz.ble.scan.end();
     }
 };
 //finish ble scan
 obniz.ble.scan.onfinish = function(peripherals, error){
     console.log("scan timeout!")
+    obniz.ble.scan.start();
 };
+
+5
+00:01:20,000 --> 00:01:21,000
+obniz.ble.scan.end();
+obniz.display.clear();
+obniz.display.print("end of video");
+
 
 
