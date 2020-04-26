@@ -15,3 +15,20 @@ obniz.switch.onchange = function (state) {
     obniz.display.clear();
     obniz.display.print(state);
 };
+
+3
+00:00:40,000 --> 00:00:47,000
+(async function() {
+    await obniz.ble.initWait();
+    //start ble scan
+    obniz.ble.scan.onfind = function(peripheral){
+        console.log(peripheral.localName)
+        obniz.display.clear();
+        obniz.display.print(peripheral.localName);
+    };
+    //finish ble scan
+    obniz.ble.scan.onfinish = async function(peripherals, error){
+        console.log("scan timeout!")
+    };
+})
+
