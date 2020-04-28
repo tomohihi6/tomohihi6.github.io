@@ -25,9 +25,7 @@ obniz.display.print("番台さんかっこいい");
 
 4
 00:00:40,000 --> 00:01:18,000
-console.log("awaitできてないかも");
 obniz.ble.initWait();
-console.log("ここは問題なし");
 //start ble scan
 const target = {};
 const setting = {
@@ -54,16 +52,16 @@ obniz.ble.scan.onfind = function(peripheral){
     }
 };
 //finish ble scan
-obniz.ble.scan.onfinish = function(peripherals, error){
+obniz.ble.scan.onfinish = function(){
     console.log("scan timeout!")
-    obniz.ble.scan.start();
+    obniz.ble.scan.start(target, setting);
 };
 
 5
 00:01:19,000 --> 00:01:20,000
 obniz.ble.scan.end();
+obniz.ble.scan.onfinish = function(){
+    console.log("scan timeout!")
+};
 obniz.display.clear();
 obniz.display.print("end of video");
-
-
-
