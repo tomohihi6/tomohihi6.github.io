@@ -29,7 +29,7 @@ console.log("awaitできてないかも");
 obniz.ble.initWait();
 console.log("ここは問題なし");
 //start ble scan
-obniz.ble.scan.start({duration : 5});
+obniz.ble.scan.start({duration : 2});
 obniz.ble.scan.onfind = function(peripheral){
     if(peripheral.iBeacon != null) {
         const beacon = peripheral.iBeacon;
@@ -37,15 +37,15 @@ obniz.ble.scan.onfind = function(peripheral){
         if(rssi > -70) {   
             obniz.display.clear();
             obniz.display.print("beacon is immediate");
-            $('#print').val("beacon is immediate");
+            $('#print').text("beacon is immediate");
         }else if(rssi <= -71 && rssi > -80) {
             obniz.display.clear();
             obniz.display.print("beacon is near");
-            $('#print').val("beacon is near");
+            $('#print').text("beacon is near");
         }else {
             obniz.display.clear();
             obniz.display.print("beacon is far");
-            $('#print').val("beacon is far");
+            $('#print').text("beacon is far");
         }
     }
 };
