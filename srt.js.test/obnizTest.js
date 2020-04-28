@@ -29,10 +29,11 @@ console.log("awaitできてないかも");
 obniz.ble.initWait();
 console.log("ここは問題なし");
 //start ble scan
+const target = {};
 const setting = {
     duration: 2,
 }
-obniz.ble.scan.start(setting);
+obniz.ble.scan.start(target, setting);
 obniz.ble.scan.onfind = function(peripheral){
     if(peripheral.iBeacon != null) {
         const beacon = peripheral.iBeacon;
