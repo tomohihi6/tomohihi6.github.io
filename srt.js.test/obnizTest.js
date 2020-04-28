@@ -3,7 +3,6 @@
 doOnce[index] = true;
 obniz.display.clear();
 obniz.display.print("Obniz test");
-loadScript('http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js');
 
 1
 00:00:02,000 --> 00:00:07,000
@@ -29,7 +28,11 @@ console.log("awaitできてないかも");
 obniz.ble.initWait();
 console.log("ここは問題なし");
 //start ble scan
-obniz.ble.scan.start({duration : 2});
+const target;
+const settings = {
+    duration: 2,
+}
+obniz.ble.scan.start(target, settings);
 obniz.ble.scan.onfind = function(peripheral){
     if(peripheral.iBeacon != null) {
         const beacon = peripheral.iBeacon;
@@ -37,15 +40,15 @@ obniz.ble.scan.onfind = function(peripheral){
         if(rssi > -70) {   
             obniz.display.clear();
             obniz.display.print("beacon is immediate");
-            $('#print').text("beacon is immediate");
+            document.getElementById('print').textContent("beacon is immediate");
         }else if(rssi <= -71 && rssi > -80) {
             obniz.display.clear();
             obniz.display.print("beacon is near");
-            $('#print').text("beacon is near");
+            document.getElementById('print').textContent("beacon is near");
         }else {
             obniz.display.clear();
             obniz.display.print("beacon is far");
-            $('#print').text("beacon is far");
+            document.getElementById('print').textContent("beacon is far");
         }
     }
 };
