@@ -8,6 +8,7 @@ obniz.display.print("Obniz test");
 00:00:02,000 --> 00:00:07,000
 obniz.display.clear();
 obniz.display.print("ゆまち");
+document.getElementById('print').textContent("ゆまち");
 console.log("ゆまち")
 
 2
@@ -28,11 +29,10 @@ console.log("awaitできてないかも");
 obniz.ble.initWait();
 console.log("ここは問題なし");
 //start ble scan
-const target;
-const settings = {
+const setting = {
     duration: 2,
 }
-obniz.ble.scan.start(target, settings);
+obniz.ble.scan.start(setting);
 obniz.ble.scan.onfind = function(peripheral){
     if(peripheral.iBeacon != null) {
         const beacon = peripheral.iBeacon;
