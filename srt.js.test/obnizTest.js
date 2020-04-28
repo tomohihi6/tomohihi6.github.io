@@ -8,7 +8,7 @@ obniz.display.print("Obniz test");
 00:00:02,000 --> 00:00:07,000
 obniz.display.clear();
 obniz.display.print("ゆまち");
-document.getElementById('print').textContent("ゆまち");
+document.getElementById('print').textContent = "ゆまち";
 console.log("ゆまち")
 
 2
@@ -40,15 +40,15 @@ obniz.ble.scan.onfind = function(peripheral){
         if(rssi > -70) {   
             obniz.display.clear();
             obniz.display.print("beacon is immediate");
-            document.getElementById('print').textContent("beacon is immediate");
+            document.getElementById('print').textContent = "beacon is immediate";
         }else if(rssi <= -71 && rssi > -80) {
             obniz.display.clear();
             obniz.display.print("beacon is near");
-            document.getElementById('print').textContent("beacon is near");
+            document.getElementById('print').textContent = "beacon is near";
         }else {
             obniz.display.clear();
             obniz.display.print("beacon is far");
-            document.getElementById('print').textContent("beacon is far");
+            document.getElementById('print').textContent = "beacon is far";
         }
     }
 };
