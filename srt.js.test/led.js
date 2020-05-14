@@ -9,17 +9,19 @@ isSkip = false;
 1
 00:00:24,000 --> 00:00:26,000
 player.pauseVideo(); // 動画の一時停止
-if(!isSkip) {
-    obniz.switch.onchange = function(state) {
-        if(state === "push") {
-            player.seekTo(27,true);
-            player.playVideo();
-        }
+obniz.switch.onchange = function(state) {
+    if(state === "push") {
+        player.seekTo(27,true);
+        player.playVideo();
     }
 }
+
 
 2
 00:00:27,000 --> 00:00:28,000
 isSkip = true;
+obniz.switch.onchange = function(state) {
+    console.log("上書き完了");
+}
 
 
