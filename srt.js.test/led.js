@@ -18,9 +18,14 @@ obniz.switch.onchange = function(state) {
     }
 }
 
-1
-00:00:30,000 --> 00:00:31,000
+2
+00:00:29,500 --> 00:00:31,000
 doOnce[index] = true;
 led.on();
+
+3
+00:00:34,000 --> 00:00:34,500
+doOnce[index] = true;
+led.off();
 
 
