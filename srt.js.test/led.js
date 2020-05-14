@@ -9,18 +9,14 @@ led = obniz.wired("LED", { anode:0, cathode:5 } );
 00:00:24,000 --> 00:00:26,000
 doOnce[index] = true;
 player.pauseVideo(); // 動画の一時停止
-fn = async function() {
-    const state = await obniz.switch.getWait();
-    if(state == "push") {
+obniz.switch.onchange = function(state) {
+    if(state === "push") {
         player.playVideo();
     }
+    obniz.switch.onchange = function(state) {
+        console.log("上書き完了");
+    }
 }
-fn();
 
-2
-00:00:27,000 --> 00:00:28,000
-obniz.switch.onchange = function(state) {
-    console.log("上書き完了");
-}
 
 
