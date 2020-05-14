@@ -4,7 +4,7 @@ doOnce[index] = true;
 obniz.display.clear();
 obniz.display.print("LED test");
 led = obniz.wired("LED", { anode:0, cathode:5 } );
-let isSkip = false;
+isSkip = false;
 
 1
 00:00:24,000 --> 00:00:26,000
