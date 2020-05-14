@@ -10,6 +10,7 @@ led = obniz.wired("LED", { anode:0, cathode:5 } );
 player.pauseVideo(); // 動画の一時停止
 obniz.switch.onchange = function(state) {
     if(state === "push") {
+        player.seekTo(27,true);
         player.playVideo();
     }
 }
