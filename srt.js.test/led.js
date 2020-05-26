@@ -20,6 +20,7 @@ obniz.switch.onchange = function(state) {
 
 2
 00:00:29,500 --> 00:00:31,000
+ではLEDを光らせます．
 doOnce[index] = true;
 led.on();
 
