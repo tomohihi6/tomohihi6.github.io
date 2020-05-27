@@ -6,7 +6,11 @@ obniz.display.print("LED TEST");
 led = obniz.wired("LED", { anode:0, cathode:5 } );
 const doc = editor.getDoc();
 const preValue = doc.getValue()
-doc.setValue("const obniz = new Obniz('OBNIZ_ID_HERE')\nobniz.display.clear()\nobniz.display.print('LED TEST')");
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('LED TEST')`
+);
 
 1
 00:00:24,000 --> 00:00:26,000
@@ -27,16 +31,47 @@ doOnce[index] = true;
 led.on();
 const doc = editor.getDoc();
 doc.setValue(
-    "const obniz = new Obniz('OBNIZ_ID_HERE')\n" + 
-    "let led = obniz.wired(\"LED\", {anode:0, cathode:1} )\n" + 
-    " obniz.onconnect = async function () {\n" + 
-        "led.on()\n" + 
-      "};\n"
-    );
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+let led = obniz.wired("LED", {anode:0, cathode:1} )
+obniz.onconnect = async function () {
+    led.on()
+}`
+);
 
 3
 00:00:34,000 --> 00:00:34,500
 doOnce[index] = true;
 led.off();
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+let led = obniz.wired("LED", {anode:0, cathode:1} )
+obniz.onconnect = async function () {
+    led.off()
+}`
+);
 
+4
+00:00:36,800 --> 00:00:40,200
+doOnce[index] = true;
+led.on();
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+let led = obniz.wired("LED", {anode:0, cathode:1} )
+obniz.onconnect = async function () {
+    led.on()
+}`
+);
 
+5
+00:00:40,300
+led.off();
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+let led = obniz.wired("LED", {anode:0, cathode:1} )
+obniz.onconnect = async function () {
+    led.off()
+}`
+);
