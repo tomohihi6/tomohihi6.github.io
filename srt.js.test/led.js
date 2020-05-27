@@ -6,8 +6,7 @@ obniz.display.print("LED TEST");
 led = obniz.wired("LED", { anode:0, cathode:5 } );
 const doc = editor.getDoc();
 const preValue = doc.getValue()
-doc.setValue("const obniz = new Obniz('OBNIZ_ID_HERE')\nobniz.display.clear()\nobniz.display.print('LEDTEST')");
-
+doc.setValue("const obniz = new Obniz('OBNIZ_ID_HERE')\nobniz.display.clear()\nobniz.display.print('LED TEST')");
 
 1
 00:00:24,000 --> 00:00:26,000
