@@ -37,19 +37,25 @@ obniz.display.print('LED TEST')`
 );
 
 1
-00:00:24,000 --> 00:00:26,000
-doOnce[index] = true;
-player.pauseVideo(); // 動画の一時停止
-const currentTime = player.getCurrentTime()
-const seekTime = 29 - currentTime;
+00:00:01,100 --> 00:00:20,000
 vars.rightfunc[index] = function() {
-    player.seekTo(seekTime,true);
+    player.seekTo(22, true)
+}
+
+2
+00:00:24,000 --> 00:00:26,000
+player.pauseVideo(); // 動画の一時停止
+vars.leftfunc[index] = function() {
+    player.seekTo(1, true);
+}
+vars.rightfunc[index] = function() {
+    player.seekTo(29,true);
 }
 vars.pushfunc[index] = function() {
     player.playVideo();
 }
 
-2
+3
 00:00:29,500 --> 00:00:31,000
 led.on();
 const doc = editor.getDoc();
@@ -60,15 +66,15 @@ obniz.onconnect = async function () {
     led.on()
 }`
 );
-const currentTime = player.getCurrentTime()
-const seekTime = 34 - currentTime;
+vars.leftfunc[index] = function() {
+    player.seekTo(22, true);
+}
 vars.rightfunc[index] = function() {
-    player.seekTo(seekTime,true);
+    player.seekTo(33,true);
 }
 
-3
+4
 00:00:34,000 --> 00:00:34,500
-doOnce[index] = true;
 led.off();
 const doc = editor.getDoc();
 doc.setValue(
@@ -78,8 +84,14 @@ obniz.onconnect = async function () {
     led.off()
 }`
 );
+vars.leftfunc[index] = function() {
+    player.seekTo(29, true);
+}
+vars.rightfunc[index] = function() {
+    player.seekTo(36,true);
+}
 
-4
+5
 00:00:36,800 --> 00:00:40,200
 doOnce[index] = true;
 led.on();
@@ -91,8 +103,14 @@ obniz.onconnect = async function () {
     led.on()
 }`
 );
+vars.leftfunc[index] = function() {
+    player.seekTo(34, true);
+}
+vars.rightfunc[index] = function() {
+    player.seekTo(40,true);
+}
 
-5
+6
 00:00:40,300
 led.off();
 const doc = editor.getDoc();
@@ -103,3 +121,9 @@ obniz.onconnect = async function () {
     led.off()
 }`
 );
+vars.leftfunc[index] = function() {
+    player.seekTo(36, true);
+}
+vars.rightfunc[index] = function() {
+    player.stopVideo();
+}
