@@ -82,7 +82,7 @@ obniz.onconnect = async function () {
 );
 
 5
-00:01:00,000 --> 00:01:22,000
+00:01:00,000 --> 00:01:02,200
 servo.angle(20.0)
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
@@ -95,7 +95,17 @@ vars.rightfunc[index] = function() {
 }
 
 6
-00:01:02,250
+00:01:02,250 --> 00:01:05,000
+servo.angle(20.0)
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
@@ -115,7 +125,17 @@ obniz.onconnect = async function () {
 );
 
 7
-00:01:05,003
+00:01:05,003 --> 00:01:22,000
+servo.angle(20.0)
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
