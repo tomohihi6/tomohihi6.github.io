@@ -64,7 +64,38 @@ obniz.onconnect = async function () {
 servo.angle(90.0);
 
 4
+00:00:59,900
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('servo test')
+const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})
+obniz.onconnect = async function () {
+    servo.angle(90.0)
+    obniz.switch.onchange = function (state) {
+        if(state === 'left') {
+            servo.angle(20.0)
+        }
+    }
+}`
+);
+
+5
 00:01:00,000 --> 00:01:22,000
+servo.angle(20.0)
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
+
+6
+00:01:02,250
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
@@ -78,27 +109,29 @@ obniz.onconnect = async function () {
             servo.angle(20.0)
         } else if(state === 'push') {
             servo.angle(90.0)
+        } 
+    }
+}`
+);
+
+7
+00:01:05,003
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('servo test')
+const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})
+obniz.onconnect = async function () {
+    servo.angle(90.0)
+    obniz.switch.onchange = function (state) {
+        if(state === 'left') {
+            servo.angle(20.0)
         } else if(state === 'push') {
+            servo.angle(90.0)
+        } else if(state === 'right') {
             servo.angle(180.0)
         }
     }
 }`
 );
-servo.angle(20.0)
-vars.leftfunc[index] = function() {
-    servo.angle(20.0)
-}
-vars.pushfunc[index] = function() {
-    servo.angle(90.0)
-}
-vars.rightfunc[index] = function() {
-    servo.angle(180.0)
-}
-
-// 4
-// 00:01:02,250
-// servo.angle(90.0);
-
-// 5
-// 00:01:05,003
-// servo.angle(180.0)
