@@ -28,7 +28,7 @@ obniz.switch.onchange = function(state) {
 }
 
 1
-00:00:01,800 --> 00:00:43,000
+00:00:01,800 --> 00:00:37,000
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
