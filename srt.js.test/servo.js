@@ -1,11 +1,9 @@
 0
 00:00:00,000 --> 00:00:01,000
 doOnce[index] = true;
-obniz.onconnect = async function() {
-    obniz.display.clear();
-    obniz.display.print("servo test");
-    servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4});
-}
+obniz.display.clear();
+obniz.display.print("servo test");
+servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4});
 vars.leftfunc = {}; //obnizのスイッチを左に倒した時に起こる関数を登録しておくための変数
 vars.rightfunc = {}; 
 vars.pushfunc = {}; 

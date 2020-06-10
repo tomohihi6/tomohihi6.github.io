@@ -1,11 +1,9 @@
 0
 00:00:00,000 --> 00:00:01,000
 doOnce[index] = true;
-obniz.onconnect = async function() {
-    obniz.display.clear();
-    obniz.display.print("LED TEST");
-    led = obniz.wired("LED", { anode:0, cathode:1 } );
-}
+obniz.display.clear();
+obniz.display.print("LED TEST");
+led = obniz.wired("LED", { anode:0, cathode:1 } );
 vars.leftfunc = {}; //obnizのスイッチを左に倒した時に起こる関数を登録しておくための変数
 vars.rightfunc = {}; 
 vars.pushfunc = {}; 
