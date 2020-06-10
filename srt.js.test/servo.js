@@ -38,7 +38,7 @@ vars.rightfunc[index] = function() {
 servo.angle(90.0);
 
 3
-00:00:59,250
+00:00:59,250 --> 00:01:22,000
 servo.angle(20.0)
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
