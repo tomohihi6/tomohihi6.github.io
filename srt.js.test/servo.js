@@ -29,16 +29,61 @@ obniz.switch.onchange = function(state) {
 
 1
 00:00:01,800 --> 00:00:43,000
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('servo test')`
+);
 vars.rightfunc[index] = function() {
     player.seekTo(44, true)
 }
 
 2
-00:00:44,800 --> 00:00:45,000
-servo.angle(90.0);
+00:00:37,000 --> 00:00:37,500
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('servo test')
+const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})`
+);
 
 3
-00:00:01,000 --> 00:01:22,000
+00:00:44,800 --> 00:00:45,000
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('servo test')
+const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})
+obniz.onconnect = async function () {
+    servo.angle(90.0)
+}`
+);
+servo.angle(90.0);
+
+4
+00:01:00,000 --> 00:01:22,000
+const doc = editor.getDoc();
+doc.setValue(
+`const obniz = new Obniz('OBNIZ_ID_HERE')
+obniz.display.clear()
+obniz.display.print('servo test')
+const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})
+obniz.onconnect = async function () {
+    servo.angle(90.0)
+    obniz.switch.onchange = function (state) {
+        if(state === 'left') {
+            servo.angle(20.0)
+        } else if(state === 'push') {
+            servo.angle(90.0)
+        } else if(state === 'push') {
+            servo.angle(180.0)
+        }
+    }
+}`
+);
 servo.angle(20.0)
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
