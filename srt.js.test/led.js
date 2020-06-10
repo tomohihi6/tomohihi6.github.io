@@ -1,20 +1,20 @@
 0
 00:00:00,000 --> 00:00:01,000
 doOnce[index] = true;
-obniz.display.clear();
-obniz.display.print("LED TEST");
-led = obniz.wired("LED", { anode:0, cathode:5 } );
-vars.leftfunc = {};
-vars.rightfunc = {};
-vars.pushfunc = {};
+obniz.onconnect = async function() {
+    obniz.display.clear();
+    obniz.display.print("LED TEST");
+    led = obniz.wired("LED", { anode:0, cathode:1 } );
+}
+vars.leftfunc = {}; //obnizのスイッチを左に倒した時に起こる関数を登録しておくための変数
+vars.rightfunc = {}; 
+vars.pushfunc = {}; 
 obniz.switch.onchange = function(state) {
     if(state === "left") {
+        //各シーンで違う動作をさせる
         let fn = indexedFunction(vars.leftfunc);
         if (fn != null) {
             fn.call(null);
-            console.log(index);
-            console.log(fn);
-            console.log(vars.leftfunc)
         }
     } else if(state === "right") {
         let fn = indexedFunction(vars.rightfunc);
@@ -28,16 +28,15 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
+
+1
+00:00:01,100 --> 00:00:20,000
 const doc = editor.getDoc();
-const preValue = doc.getValue()
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
 obniz.display.print('LED TEST')`
 );
-
-1
-00:00:01,100 --> 00:00:20,000
 vars.rightfunc[index] = function() {
     player.seekTo(22, true)
 }
@@ -93,7 +92,6 @@ vars.rightfunc[index] = function() {
 
 5
 00:00:36,800 --> 00:00:40,200
-doOnce[index] = true;
 led.on();
 const doc = editor.getDoc();
 doc.setValue(
