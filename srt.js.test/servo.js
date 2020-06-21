@@ -26,7 +26,7 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
-attention = document.getElementById("state").textContent
+attention = document.getElementById("state").innerText
 
 1
 00:00:01,800 --> 00:00:23,000
@@ -47,21 +47,21 @@ attention = `手元のobnizを動画と同じように操作してください
 準備ができたらobnizのボタンを押して，動画を再生してください.`
 
 3
-00:00:27,001--> 00:00:27,100
+00:00:27,100--> 00:00:27,200
 player.pauseVideo();
 vars.pushfunc[index] = function () {
     player.playVideo();
 }
 
 4
-00:00:32,001--> 00:00:32,100
+00:00:32,100--> 00:00:32,200
 player.pauseVideo();
 vars.pushfunc[index] = function () {
     player.playVideo();
 }
 
 5
-00:00:36,001--> 00:00:36,100
+00:00:36,100--> 00:00:36,200
 player.pauseVideo();
 vars.pushfunc[index] = function () {
     player.playVideo();
