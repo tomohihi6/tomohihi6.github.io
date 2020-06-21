@@ -26,8 +26,8 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
-document.getElementById('state').innerText　= "動画に注目してください"
-console.log(attention);
+attention = document.getElementById('state')
+attention.innerText = "動画に注目してください"
 
 1
 00:00:01,800 --> 00:00:23,000
