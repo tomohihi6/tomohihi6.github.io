@@ -43,8 +43,7 @@ attention = "動画に注目してください"
 
 2
 00:00:23,000--> 00:00:27,000
-attention = 
-`手元のobnizを動画と同じように操作してください
+attention = `手元のobnizを動画と同じように操作してください
 準備ができたらobnizのボタンを押して，動画を再生してください.`
 
 3
@@ -80,8 +79,7 @@ const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})`
 
 7
 00:00:44,800 --> 00:00:45,000
-attention = 
-`手元のobnizと動画が同じ動作をします．
+attention = `手元のobnizと動画が同じ動作をします．
 サイト右側のコードにも注目しながら動作を確認してください`
 const doc = editor.getDoc();
 doc.setValue(
@@ -115,10 +113,8 @@ obniz.onconnect = async function () {
 
 9
 00:01:00,000 --> 00:01:02,200
-attention = 
-`手元のobnizと動画が同じ動作をします．
+attention = `手元のobnizと動画が同じ動作をします．
 サイト右側のコードにも注目しながら動作を確認してください
-
 手元のobnizのスイッチを操作することによって，サーボを好きに動かすことができます．`
 servo.angle(20.0)
 vars.leftfunc[index] = function() {
