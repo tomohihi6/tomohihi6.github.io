@@ -26,7 +26,7 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
-attention = document.getElementById("state").innerText
+attention = document.getElementById('state')
 
 1
 00:00:01,800 --> 00:00:23,000
@@ -43,7 +43,7 @@ attention = "動画に注目してください"
 
 2
 00:00:23,000--> 00:00:27,000
-attention = `手元のobnizを動画と同じように操作してください
+attention.innerText = `手元のobnizを動画と同じように操作してください
 準備ができたらobnizのボタンを押して，動画を再生してください.`
 
 3
