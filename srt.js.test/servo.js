@@ -41,6 +41,7 @@ vars.rightfunc[index] = function() {
     player.seekTo(44, true)
 }
 attention = "動画に注目してください"
+console.log(attention)
 
 2
 00:00:23,000--> 00:00:27,000
