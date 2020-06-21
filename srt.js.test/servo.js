@@ -26,7 +26,7 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
-attention = document.getElementById('state').innerText
+document.getElementById('state').innerText　= "動画に注目してください"
 console.log(attention);
 
 1
