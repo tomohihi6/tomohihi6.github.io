@@ -26,7 +26,8 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
-attention = document.getElementById('state')
+attention = document.getElementById('state').innerText
+console.log(attention);
 
 1
 00:00:01,800 --> 00:00:23,000
