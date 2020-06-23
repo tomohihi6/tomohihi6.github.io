@@ -1,12 +1,13 @@
 0
 00:00:00,000 --> 00:00:01,000
 doOnce[index] = true;
-obniz.display.clear();
-obniz.display.print("servo test");
-servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4});
+document.getElementById('state').innerText = "動画に注目してください"
 vars.leftfunc = {}; //obnizのスイッチを左に倒した時に起こる関数を登録しておくための変数
 vars.rightfunc = {}; 
 vars.pushfunc = {}; 
+obniz.display.clear();
+obniz.display.print("servo test");
+servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4});
 obniz.switch.onchange = function(state) {
     if(state === "left") {
         //各シーンで違う動作をさせる
@@ -26,7 +27,6 @@ obniz.switch.onchange = function(state) {
         }
     }
 }
-document.getElementById('state').innerText = "動画に注目してください"
 
 1
 00:00:01,800 --> 00:00:23,000
@@ -39,8 +39,6 @@ obniz.display.print('servo test')`
 vars.rightfunc[index] = function() {
     player.seekTo(44, true)
 }
-attention.innerText = "動画に注目してください"
-console.log(attention)
 
 2
 00:00:23,000--> 00:00:27,000
