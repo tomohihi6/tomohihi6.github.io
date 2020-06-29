@@ -128,16 +128,6 @@ vars.rightfunc[index] = function() {
 
 10
 00:01:02,250 --> 00:01:05,000
-servo.angle(90.0)
-vars.leftfunc[index] = function() {
-    servo.angle(20.0)
-}
-vars.pushfunc[index] = function() {
-    servo.angle(90.0)
-}
-vars.rightfunc[index] = function() {
-    servo.angle(180.0)
-}
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
@@ -155,10 +145,7 @@ obniz.onconnect = async function () {
     }
 }`
 );
-
-11
-00:01:05,003 --> 00:01:20,000
-servo.angle(180.0)
+servo.angle(90.0)
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
 }
@@ -168,6 +155,9 @@ vars.pushfunc[index] = function() {
 vars.rightfunc[index] = function() {
     servo.angle(180.0)
 }
+
+11
+00:01:05,003 --> 00:01:20,000
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
@@ -187,6 +177,16 @@ obniz.onconnect = async function () {
     }
 }`
 );
+servo.angle(180.0)
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
 
 12
 00:01:21,003 --> 00:01:21,200
