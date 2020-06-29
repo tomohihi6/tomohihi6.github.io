@@ -157,7 +157,7 @@ obniz.onconnect = async function () {
 );
 
 11
-00:01:05,003 --> 00:01:22,000
+00:01:05,003 --> 00:01:20,000
 servo.angle(180.0)
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
@@ -187,3 +187,7 @@ obniz.onconnect = async function () {
     }
 }`
 );
+
+12
+00:01:21,003 --> 00:01:21,200
+player.pauseVideo();
