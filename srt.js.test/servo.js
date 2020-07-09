@@ -2,6 +2,11 @@
 00:00:00,000 --> 00:00:01,000
 doOnce[index] = true;
 document.getElementById('state').innerText = "動画に注目してください"
+loadScript("https://tomohihi6.github.io/srt.js.test/highlight.js", () => {
+    console.log("highlight.js was loaded")
+})
+highlightAll = ["player", "codeMirrorArea"];
+doHighlight("player", highlightAll);
 vars.leftfunc = {}; //obnizのスイッチを左に倒した時に起こる関数を登録しておくための変数
 vars.rightfunc = {}; 
 vars.pushfunc = {}; 
@@ -78,6 +83,7 @@ const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})`
 
 7
 00:00:44,800 --> 00:00:45,000
+doHighlight("codeMirrorArea", highlightAll);
 document.getElementById('state').innerText = `手元のobnizと動画が同じ動作をします．
 サイト右側のコードにも注目しながら動作を確認してください`
 const doc = editor.getDoc();
