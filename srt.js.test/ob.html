@@ -1,0 +1,86 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://obniz.io/js/jquery-3.2.1.min.js"></script>
+  <script src="https://unpkg.com/obniz@3.0.0/obniz.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="https://qurihara.github.io/srt.js/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
+  <script src="./highlight.js"></script>
+  <script type="text/javascript" src="https://qurihara.github.io/srt.js/subtitle.js" charset="utf-8"></script>
+  <script type="text/javascript" src="https://qurihara.github.io/srt.js/srt.js" charset="utf-8"></script>
+</head>
+<body id="body">
+
+    <div id="obniz-debug"></div>
+    <div id="header"></div>
+        <div id="container" style="display:flex; flex-direction:row; margin:10px"　data-step="2" data-intro='2' data-disable-interaction="true">
+            <div id="player" data-step="1" data-intro='1' data-disable-interaction="true"></div>
+            <div style="flex:1; margin-left: 10px" id="codeMirrorArea">
+            <textarea id="txt-editor" style="flex:1"></textarea>
+            </div>
+        </div>
+        <div style="min-width:50%; margin: 20px; display:flex; flex-direction:column; justify-content:center; align-items:center" data-step="3" data-intro='3' data-disable-interaction="true">
+        <h3 id="state"></h3>
+        </div>
+
+        <button id="start">スタート</button>
+
+
+    <!-- <div style="top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    opacity: 0.8;
+    background-color:black;
+    z-index: 999999;"></div> -->
+            
+    <script type="text/javascript" src="https://tomohihi6.github.io/srt.js.test/servo.js" charset="utf-8"></script>
+    <script>
+    let editor = CodeMirror.fromTextArea(document.getElementById("txt-editor"),
+    {
+        mode:"javascript", // 言語を設定する
+        lineNumbers: true,　 // 行番号を表示する
+        lineWrapping: true,　 // 行を折り返す
+        autoCloseBrackets: true,
+    });
+    editor.setSize('100%', '400px')
+    
+    obniz = new Obniz("4548-5104");
+    obniz.onconnect = async function () {
+        obniz.display.clear();
+        obniz.display.print("起動")
+    };
+
+
+    document.getElementById('start').onclick = function() {
+        doHighlight("player", highlightAll);
+
+        // introJs().setOptions({
+        //     'exitOnEsc': false,
+        //     'exitOnOverlayClick': false
+        // }).start();
+    }
+    
+    // window.addEventListener("keyup", (e) => {
+    //     const keyName = e.key;
+    //     console.log("動いた")
+    //     if(keyName === "ArrowRight") {
+    //         console.log(keyName)
+    //         if(document.getElementById("disable-interaction")) {
+    //             console.log("ここまでおk")
+    //             doHighlight("codeMirrorArea", highlightAll);
+    //         }
+    //     }
+    // })
+
+    </script>
+</body>
+</html>
