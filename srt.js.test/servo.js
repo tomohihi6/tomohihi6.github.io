@@ -60,7 +60,7 @@ vars.pushfunc[index] = function () {
 
 4
 00:00:27,700 --> 00:00:27,900
-doHighlight();
+doHighlight("player", highlightAll);;
 
 5
 00:00:32,100--> 00:00:32,200
@@ -72,7 +72,7 @@ vars.pushfunc[index] = function () {
 
 6
 00:00:32,400--> 00:00:32,600
-doHighlight();
+doHighlight("player", highlightAll);;
 
 7
 00:00:36,100--> 00:00:36,200
@@ -84,7 +84,7 @@ vars.pushfunc[index] = function () {
 
 8
 00:00:37,000 --> 00:00:37,500
-doHighlight()
+doHighlight("player", highlightAll);;
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
