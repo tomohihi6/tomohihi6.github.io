@@ -209,3 +209,13 @@ vars.rightfunc[index] = function() {
 14
 00:01:21,003 --> 00:01:21,200
 player.pauseVideo();
+servo.angle(180.0)
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
