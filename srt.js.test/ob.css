@@ -10,6 +10,7 @@
 #main-container {
     display: flex;
     flex-direction: row;
+    height: auto;
 }
 
 #video-container {
@@ -19,7 +20,7 @@
 }
 
 #video-main {
-    height: 70%;
+    height: auto;
     width: 100%;
     border: solid 1px ;
 }
@@ -45,12 +46,12 @@
 }
 
 #video-summary {
-    height: 30%;
+    height: 20%;
     width: 100%;
     border: solid 1px;
 }
 
 #source-memo {
     flex: 1;
-    margin-left: 1vw;
+    margin-left: 1px;
 }
