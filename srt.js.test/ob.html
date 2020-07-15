@@ -44,22 +44,23 @@
 
             <div id="source-memo">
                 <div id="source-code">
-                    <ul class="tab">
-                        <li id="tab1"></li>
-                        <li id="tab2"></li>
-                    </ul>
-                    <div class="tabContent">
-                        <div id="tab1-content">
-                            <div id="codeMirrorArea">
+                    <div class="tab_wrap">
+                        <input id="tab1" type="radio" name="tab_btn" checked>
+                        <input id="tab2" type="radio" name="tab_btn">
+                        
+                        <div class="tab_area">
+                            <label class="tab1_label" for="tab1">全ソース</label>
+                            <label class="tab2_label" for="tab2">今のコード</label>
+                        </div>
+                        <div class="panel_area">
+                            <div id="panel1" class="tab_panel">
                                 <textarea id="all-source-code"></textarea>
                             </div>
-                        </div>
-                        <div id="tab2-content">
-                            <div id="codeMirrorArea">
+                            <div id="panel2" class="tab_panel">
                                 <textarea id="video-source-code"></textarea>
                             </div>
                         </div>
-                    </div>
+                       </div>
                 </div>
                 <div id="memo-container">
                     <textarea class="memo" placeholder="メモ欄"></textarea>
@@ -82,32 +83,22 @@
             lineWrapping: true,　 // 行を折り返す
             autoCloseBrackets: true,
         });
-        editor.setSize('100%', '400px')
+        editor.setSize('100%', '100%')
 
-        let editor2 = CodeMirror.fromTextArea(document.getElementById("video-source-code"),
+        let editorO = CodeMirror.fromTextArea(document.getElementById("video-source-code"),
         {
             mode:"javascript", // 言語を設定する
             lineNumbers: true,　 // 行番号を表示する
             lineWrapping: true,　 // 行を折り返す
             autoCloseBrackets: true,
         });
-        editor.setSize('100%', '400px')
+        editorO.setSize('100%', '100%')
         
         obniz = new Obniz("4548-5104");
         obniz.onconnect = async function () {
             obniz.display.clear();
             obniz.display.print("起動")
         };
-
-
-        document.getElementById('start').onclick = function() {
-            doHighlight("player", highlightAll);
-
-            // introJs().setOptions({
-            //     'exitOnEsc': false,
-            //     'exitOnOverlayClick': false
-            // }).start();
-        }
     </script>
 </body>
 </html>
