@@ -1,7 +1,6 @@
 0
 00:00:00,000 --> 00:00:01,000
 doOnce[index] = true;
-document.getElementById('state').innerText = "動画に注目してください"
 loadScript("https://tomohihi6.github.io/srt.js.test/highlight.js", () => {
     console.log("highlight.js was loaded")
 })
@@ -44,11 +43,6 @@ obniz.display.print('servo test')`
 vars.rightfunc[index] = function() {
     player.seekTo(44, true)
 }
-
-2
-00:00:23,000--> 00:00:27,000
-document.getElementById('state').innerText = `手元のobnizを動画と同じように操作してください
-準備ができたらobnizのボタンを押して，動画を再生してください.`
 
 3
 00:00:27,300 --> 00:00:27,500
@@ -96,8 +90,6 @@ const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})`
 9
 00:00:44,800 --> 00:00:45,000
 doHighlight("panel1", highlightAll);
-document.getElementById('state').innerText = `手元のobnizと動画が同じ動作をします．
-サイト右側のコードにも注目しながら動作を確認してください`
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
@@ -130,9 +122,6 @@ obniz.onconnect = async function () {
 
 11
 00:01:00,000 --> 00:01:02,200
-document.getElementById('state').innerText = `手元のobnizと動画が同じ動作をします．
-サイト右側のコードにも注目しながら動作を確認してください
-手元のobnizのスイッチを操作することによって，サーボを好きに動かすことができます．`;
 servo.angle(20.0)
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
@@ -209,13 +198,3 @@ vars.rightfunc[index] = function() {
 14
 00:01:21,003 --> 00:01:21,200
 player.pauseVideo();
-servo.angle(180.0)
-vars.leftfunc[index] = function() {
-    servo.angle(20.0)
-}
-vars.pushfunc[index] = function() {
-    servo.angle(90.0)
-}
-vars.rightfunc[index] = function() {
-    servo.angle(180.0)
-}
