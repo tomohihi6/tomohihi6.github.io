@@ -4,7 +4,7 @@ doOnce[index] = true;
 loadScript("https://tomohihi6.github.io/srt.js.test/highlight.js", () => {
     console.log("highlight.js was loaded")
 })
-highlightAll = ["player", "panel1"];
+highlightAll = ["player", "panel_area"];
 doHighlight("player", highlightAll);
 vars.leftfunc = {}; //obnizのスイッチを左に倒した時に起こる関数を登録しておくための変数
 vars.rightfunc = {}; 
