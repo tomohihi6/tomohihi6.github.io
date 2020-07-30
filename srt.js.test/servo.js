@@ -105,7 +105,7 @@ servo.angle(90.0);
 10
 00:00:52,800 --> 00:00:53,000
 const targetIds = ["player", "panel_area"];
-doHighlight(targetIds, hightlightAll);
+doHighlight(targetIds, highlightAll);
 
 11
 00:00:59,900
