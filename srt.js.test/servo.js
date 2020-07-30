@@ -47,7 +47,7 @@ vars.rightfunc[index] = function() {
 3
 00:00:27,300 --> 00:00:27,500
 player.pauseVideo();
-deleteMe();
+deleteMe(highlightAll);
 vars.pushfunc[index] = function () {
     player.playVideo();
 }
@@ -59,7 +59,7 @@ doHighlight("player", highlightAll);;
 5
 00:00:32,100--> 00:00:32,200
 player.pauseVideo();
-deleteMe();
+deleteMe(highlightAll);
 vars.pushfunc[index] = function () {
     player.playVideo();
 }
@@ -71,7 +71,7 @@ doHighlight("player", highlightAll);;
 7
 00:00:36,100--> 00:00:36,200
 player.pauseVideo();
-deleteMe();
+deleteMe(highlightAll);
 vars.pushfunc[index] = function () {
     player.playVideo();
 }
