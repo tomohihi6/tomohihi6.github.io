@@ -89,7 +89,7 @@ const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})`
 
 9
 00:00:44,800 --> 00:00:45,000
-doHighlight("panel1", highlightAll);
+doHighlight("panel_area", highlightAll);
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
