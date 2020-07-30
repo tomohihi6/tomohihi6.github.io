@@ -201,7 +201,7 @@ vars.rightfunc[index] = function() {
 }
 
 15
-00:01:010,003 --> 00:01:10,500
+00:01:010,003 --> 00:01:21,000
 doHighlight("player", highlightAll);
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
@@ -216,3 +216,12 @@ vars.rightfunc[index] = function() {
 16
 00:01:21,003 --> 00:01:21,200
 player.pauseVideo();
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
