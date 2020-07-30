@@ -201,7 +201,7 @@ vars.rightfunc[index] = function() {
 }
 
 15
-00:01:05,003 --> 00:01:05,500
+00:01:010,003 --> 00:01:10,500
 doHighlight("player", highlightAll);
 vars.leftfunc[index] = function() {
     servo.angle(20.0)
