@@ -103,6 +103,11 @@ obniz.onconnect = async function () {
 servo.angle(90.0);
 
 10
+00:00:52,800 --> 00:00:53,000
+const targetIds = ["player", "panel_area"];
+doHighlight(targetIds, hightlightAll);
+
+11
 00:00:59,900
 const doc = editor.getDoc();
 doc.setValue(
@@ -120,7 +125,7 @@ obniz.onconnect = async function () {
 }`
 );
 
-11
+12
 00:01:00,000 --> 00:01:02,200
 servo.angle(20.0)
 vars.leftfunc[index] = function() {
@@ -133,7 +138,7 @@ vars.rightfunc[index] = function() {
     servo.angle(180.0)
 }
 
-12
+13
 00:01:02,250 --> 00:01:05,000
 const doc = editor.getDoc();
 doc.setValue(
@@ -163,8 +168,8 @@ vars.rightfunc[index] = function() {
     servo.angle(180.0)
 }
 
-13
-00:01:05,003 --> 00:01:20,000
+14
+00:01:05,003 --> 00:01:05,500
 const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
@@ -195,6 +200,19 @@ vars.rightfunc[index] = function() {
     servo.angle(180.0)
 }
 
-14
+15
+00:01:05,003 --> 00:01:05,500
+doHighlight("player", highlightAll);
+vars.leftfunc[index] = function() {
+    servo.angle(20.0)
+}
+vars.pushfunc[index] = function() {
+    servo.angle(90.0)
+}
+vars.rightfunc[index] = function() {
+    servo.angle(180.0)
+}
+
+16
 00:01:21,003 --> 00:01:21,200
 player.pauseVideo();
