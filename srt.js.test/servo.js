@@ -34,7 +34,7 @@ obniz.switch.onchange = function(state) {
 
 1
 00:00:01,800 --> 00:00:23,000
-const doc = editor0.getDoc();
+const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
@@ -79,7 +79,7 @@ vars.pushfunc[index] = function () {
 8
 00:00:37,000 --> 00:00:37,500
 doHighlight("player", highlightAll);;
-const doc = editor0.getDoc();
+const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
@@ -90,7 +90,7 @@ const servo = obniz.wired("ServoMotor", {gnd:0, vcc:2, signal:4})`
 9
 00:00:44,800 --> 00:00:45,000
 doHighlight("panel_area", highlightAll);
-const doc = editor0.getDoc();
+const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
@@ -109,7 +109,7 @@ doHighlight(targetIds, highlightAll);
 
 11
 00:00:59,900
-const doc = editor0.getDoc();
+const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
@@ -140,7 +140,7 @@ vars.rightfunc[index] = function() {
 
 13
 00:01:02,250 --> 00:01:05,000
-const doc = editor0.getDoc();
+const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
@@ -170,7 +170,7 @@ vars.rightfunc[index] = function() {
 
 14
 00:01:05,003 --> 00:01:05,500
-const doc = editor0.getDoc();
+const doc = editor.getDoc();
 doc.setValue(
 `const obniz = new Obniz('OBNIZ_ID_HERE')
 obniz.display.clear()
