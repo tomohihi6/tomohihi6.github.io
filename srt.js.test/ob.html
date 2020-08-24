@@ -16,24 +16,6 @@
   <script type="text/javascript" src="https://qurihara.github.io/srt.js/subtitle.js" charset="utf-8"></script>
   <script type="text/javascript" src="https://qurihara.github.io/srt.js/srt.js" charset="utf-8"></script>
   <link rel="stylesheet" type="text/css" href="./ob.css">
-  <script type="text/javascript">
-    // ページの読み込み完了を待たずに即実行する処理
-   
-    const url = "./m5stickc.json";
-    const request = new XMLHttpRequest();
-    request.open("GET", url);
-    request.responseType = "json";
-    request.send();
-    request.onload = function() {
-        const response = request.response;
-        const videoTitle = document.getElementById("video-title");
-        const videoDes = document.getElementById("video-description");
-        videoTitle.innerHTML = response.videoTitle;
-        videoDes.innerHTML = response.videoDescription;
-    }
-
-    
- </script>
 </head>
 <body id="body">
 
