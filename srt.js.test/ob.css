@@ -166,3 +166,28 @@ input[type="radio"]{display:none;}
     margin: 0;
     margin: 1vw 0;
 }
+
+.blinking {
+    animation: blink 2s infinite;
+    background-color: #000;
+}
+
+#agent-container {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px;
+    height: 10vw;
+    margin-top: 1px;
+    padding: 0 1vw 1vw 1vw;
+    align-items: center;
+}
+
+#agent {
+    width: 50%;
+    height: 100%;
+}
+
+@keyframes blink{
+    0% { opacity:0.2}
+  100% { opacity:1}
+ }
