@@ -215,7 +215,8 @@ obniz.display.setColor("black")
 00:02:22,100 --> 00:02:22,500
 const doc = editor0.getDoc();
 doc.setValue(
-`const statements = [
+`// ボタンAを押した時に１つずつ順番にディスプレイに表示するための配列
+const statements = [
     obniz.display.clear(),
     obniz.display.line(30, 30, 100, 30),
     obniz.display.rect(20, 20, 20, 20),
@@ -239,17 +240,19 @@ obniz.onconnect = async() => {
     obniz.display.clear();
     let index = 0;
     obniz.buttonA.onchange = (flg) => {
+        //　最後まで表示したなら最初に戻す
         if(index == statements.length) {
             index = 0;
         }
         if(flg) {
-            eval(statements[index]);
+            eval(statements[index]); // 配列内の文字を実行文として評価する
             index++;
         }
     }
     let ledFlg = false;
     obniz.buttonB.onchange = (flg) => {
         if(flg) {
+            //ボタンが押されたら,LEDの点灯,消灯を切り替える
             ledFlg = !ledFlg
             console.log(ledFlg);
         } 
