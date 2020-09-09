@@ -5,6 +5,16 @@ doHighlight("player", highlightAll);
 obniz.ble.initWait().then(async() => {
     console.log("ble start")
 })
+vars.btnBfunc = {};
+vars.btnAfunc = {};
+obniz.buttonA.onchange = (flg) => {
+    if(flg) {
+        let fn = indexedFunction(vars.btnAfunc);
+        if (fn != null) {
+            fn.call(null);
+        }
+    }
+}
 
 1
 00:04:07,000 --> 00:04:10,000
