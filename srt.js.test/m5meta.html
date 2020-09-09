@@ -1,0 +1,164 @@
+  
+<html>
+
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="https://obniz.io/js/jquery-3.2.1.min.js"></script>
+      <script src="https://unpkg.com/obniz@3.7.0/obniz.js" crossorigin="anonymous"></script>
+      <link rel="stylesheet" type="text/css" href="https://qurihara.github.io/srt.js/style.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/mode/javascript/javascript.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/addon/edit/closebrackets.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
+      <script src="./highlight.js"></script>
+      <script type="text/javascript" src="https://qurihara.github.io/srt.js/subtitle.js" charset="utf-8"></script>
+      <script type="text/javascript" src="https://qurihara.github.io/srt.js/srt.js" charset="utf-8"></script>
+      <link rel="stylesheet" type="text/css" href="./ob.css">
+      <script type="text/javascript">
+      </script>
+    </head>
+    <body id="body">
+    
+        <div id="container">
+            <div id="header">
+                <div id="header-title">
+                    <h3>動画学習サイト</h3>
+                </div>
+                <div id="header-user">
+                    <div class="user-icon">
+                        <img id="icon" src="https://toolmania.info/wp-content/uploads/2017/11/image_in_account05.png">
+                    </div>
+                    <div class="user-name">Tomohiro</div>
+                </div>
+            </div>
+    
+            <div id="main-container">
+                <div id="video-container">
+                    <div id="video-main">
+                        <h4 id="video-title">M5StickCの解説</h4>
+                        <div id="video">
+                            <div id="player"></div>
+                        </div>
+                        
+                    </div>
+                    <div id="video-summary" style="display: flex; flex-direction: column;">
+                        <h5 id="video-description" style="margin:10px;">M5StickCの基本的な機能を解説した動画です．この動画では，M5StickCに搭載されているボタン，LED，ディスプレイについて解説しています．</h5>
+                    </div>
+                </div>
+    
+                <div id="source-memo">
+                    <div id="source-code">
+                        <div class="tab_wrap">
+                            <input id="tab2" type="radio" name="tab_btn" checked>
+                            <input id="tab1" type="radio" name="tab_btn">
+                            
+                            <div class="tab_area">
+                                <label class="tab2_label" for="tab2">今のコード</label>
+                                <label class="tab1_label" for="tab1">全ソース</label>
+                            </div>
+                            <div class="panel_area" id="panel_area">
+                                <div id="panel2" class="tab_panel">
+                                    <textarea id="video-source-code" style="display: none;"></textarea>       
+                                </div>
+                                <div id="panel1">
+                                    <textarea id="all-source-code"></textarea>
+                                </div>
+                            </div>
+                           </div>
+                    </div>
+                    <div id="memo-container">
+                        <h4 class="subTitle">学習メモ</h4>
+                        <textarea class="memo" placeholder="メモ欄"></textarea>
+                    </div>
+                </div>
+    
+               
+            </div>
+            <div id="layout-change">
+                <button>レイアウト変更</button>
+            </div>
+        </div>
+    
+        <script>
+            window.onload = function() {
+                const panel1 = document.getElementById("panel1")
+                panel1.classList.add('tab_panel');
+            }
+
+            const option = {
+                mode:"javascript", // 言語を設定する
+                lineNumbers: true,　 // 行番号を表示する
+                lineWrapping: true,　 // 行を折り返す
+                autoCloseBrackets: true,
+                readOnly: "nocursor",
+                showCursorWhenSelecting: true,
+            }
+            let editor = CodeMirror.fromTextArea(document.getElementById("all-source-code"),option);
+            editor.setSize('100%', '100%')
+    
+            let editor0 = CodeMirror.fromTextArea(document.getElementById("video-source-code"),option);
+            editor0.setSize('100%', '100%')
+    
+            obniz = new Obniz.M5StickC("9269-2634");
+            obniz.onconnect = async function () {
+                obniz.display.clear();
+            };
+
+            const doc = editor.getDoc();
+            doc.setValue(
+                `// ボタンAを押した時に１つずつ順番にディスプレイに表示するための配列
+const statements = [
+    obniz.display.clear(),
+    obniz.display.line(30, 30, 100, 30),
+    obniz.display.rect(20, 20, 20, 20),
+    obniz.display.circle(100, 30, 20),
+    obniz.display.line(60, 50, 100, 30),
+    obniz.display.rect(50, 40, 20, 20, true),
+    obniz.display.line(50, 10, 100, 30),
+    obniz.display.circle(50, 10, 10, true),
+    obniz.display.setColor('#FF0000'),
+    obniz.display.rect(50, 40, 20, 20, true),
+    obniz.display.setColor('blue'),
+    obniz.display.circle(100, 30, 20, true),
+    obniz.display.clear(),
+    obniz.display.font(null, 20),
+    obniz.display.pos(90, 50),
+    obniz.display.print("おわり"),
+    obniz.display.clear(),
+    obniz.display.setColor("black"),
+]\n
+obniz.onconnect = async() => {
+    obniz.display.clear();
+    let index = 0;
+    obniz.buttonA.onchange = (flg) => {
+        //　最後まで表示したなら最初に戻す
+        if(index == statements.length) {
+            index = 0;
+        }
+        if(flg) {
+            eval(statements[index]); // 配列内の文字を実行文として評価する
+            index++;
+        }
+    }
+    let ledFlg = false;
+    obniz.buttonB.onchange = (flg) => {
+        if(flg) {
+            //ボタンが押されたら,LEDの点灯,消灯を切り替える
+            ledFlg = !ledFlg
+            console.log(ledFlg);
+        } 
+        if(ledFlg) {
+            obniz.led.on()
+        } else {
+            obniz.led.off();
+        }
+    }
+}`
+            )
+    
+        </script>
+    </body>
+    </html>
