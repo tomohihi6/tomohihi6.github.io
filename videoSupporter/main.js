@@ -219,8 +219,26 @@ function saveTextToScriptItem() {
     nowEditing.innerText = value;
 }
 
-function saveScriptToLocalFile() {
+function saveScriptToLocalFile(fileName) {
+    const a = document.createElement('a');
+    const saveText = gatherTextsFromScriptItems();
+    a.href = 'data:text/plain,' + encodeURIComponent(saveText);
+    a.download = fileName;
 
+    a.style.display = 'none';
+    document.body.appendChild(a); // ※ DOM が構築されてからでないとエラーになる
+    a.click();
+    document.body.removeChild(a);
+}
+
+function confirmSaveScript() {
+    const fileName = window.prompt("ファイルを保存します．\nファイル名を入力してください", ".js");
+    if(!fileName || fileName == ".js") {
+        alert('ファイル名を入力してください．')
+        return ;
+    } else {
+        saveScriptToLocalFile(fileName);
+    }
 }
 
 function gatherTextsFromScriptItems() {
