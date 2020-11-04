@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>ここにタイトル</title>
-<link href="./main.css" rel="stylesheet" type="text/css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- jQuery UI -->
+<link href="./css/main.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
+
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
@@ -66,7 +66,7 @@
             <div id="timeline-body">
                 <div id="timeline-header-ruler">
                     <canvas id="canvas"></canvas>
-                    <div id="time-line-handle" style="top: 0px; left: 0px;">
+                    <div id="time-line-handle" style="top: 0px; left: 8px;">
                         <div id="handle-time">00:00</div>
                     </div>
 
@@ -74,7 +74,9 @@
 
             </div>
         </div>
-        <button onclick="gatherTextsFromScriptItems()">save</button>
+        <button onclick="confirmSaveScript()">save</button>
+        <input type="file" id="files" name="files[]" multiple />
+        <output id="list"></output>
     </div>
 </div>
 <script>
@@ -111,6 +113,36 @@
     })
     editor.setSize('100%', '80%');
     editor2.setSize('100%', '80%');
+    function handleFileSelect(evt) {
+        const files = evt.target.files; // FileList object
+
+        // Loop through the FileList and render image files as thumbnails.
+        for (var i = 0, f; f = files[i]; i++) {
+
+        // Only process image files.
+        if (!f.type.match('image.*')) {
+            continue;
+        }
+
+        const reader = new FileReader();
+
+        // Closure to capture the file information.
+        reader.onload = (function(theFile) {
+            return function(e) {
+                // Render thumbnail.
+                const span = document.createElement('span');
+                span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                                    '" title="', escape(theFile.name), '"/>'].join('');
+                document.getElementById('list').insertBefore(span, null);
+            };
+        })(f);
+
+        // Read in the image file as a data URL.
+        reader.readAsDataURL(f);
+        }
+    }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
 </script>
 </body>
 </html>
