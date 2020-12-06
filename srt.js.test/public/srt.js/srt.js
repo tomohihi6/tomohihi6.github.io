@@ -50,21 +50,29 @@ function onYouTubeIframeAPIReady() {
     saferMode = true;
     console.log("safer eval mode");
   }
-  if (para["surl"]) {
-    subUrl = para["surl"];
-    console.log("subUrl:" + subUrl);
-  }
-
-  player = new YT.Player("player", {
-    height: "390",
-    width: "640",
-    videoId: vid,
-    // playerVars: { "cc_load_policy": 1},// , "autoplay": autoplay},
-    events: {
-      "onReady": onPlayerReady,
-      "onStateChange": onPlayerStateChange
-    }
+  // if (para["surl"]) {
+  //   subUrl = para["surl"];
+  //   console.log("subUrl:" + subUrl);
+  // }
+  fetchScriptData(vid).then((url) => {
+    subUrl = url;
+    console.log("読み込まれました");
+    console.log(url);
+    player = new YT.Player("player", {
+      height: "390",
+      width: "640",
+      videoId: vid,
+      // playerVars: { "cc_load_policy": 1},// , "autoplay": autoplay},
+      events: {
+        "onReady": onPlayerReady,
+        "onStateChange": onPlayerStateChange
+      }
+    });
   });
+  console.log(`ここはsrt.js${subUrl}`);
+
+
+  
 }
 
 function confirmExtSub() {

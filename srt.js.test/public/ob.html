@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://obniz.io/js/jquery-3.2.1.min.js"></script>
   <script src="https://unpkg.com/obniz@3.7.0/obniz.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="https://qurihara.github.io/srt.js/style.css">
+
+<!-- firebase -->
+<script src="/__/firebase/8.1.2/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script src="/__/firebase/8.1.2/firebase-auth.js"></script>
+<script src="/__/firebase/8.1.2/firebase-storage.js"></script>
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+
+  <!-- codemirror -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/mode/javascript/javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/addon/edit/closebrackets.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css">
-  <script src="./highlight.js"></script>
-  <script type="text/javascript" src="https://qurihara.github.io/srt.js/subtitle.js" charset="utf-8"></script>
-  <script type="text/javascript" src="https://qurihara.github.io/srt.js/srt.js" charset="utf-8"></script>
-  <link rel="stylesheet" type="text/css" href="./ob.css">
+  <script src="./scripts/highlight.js"></script>
+  <script src="./main.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" src="./srt.js/subtitle.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./srt.js/srt.js" charset="utf-8"></script>
+  <link rel="stylesheet" type="text/css" href="./css/ob.css">
 </head>
 <body id="body">
-
     <div id="container">
         <div id="header">
             <div id="header-title">
@@ -78,7 +87,6 @@
             <button>レイアウト変更</button>
         </div>
     </div>
-
     <script>
         window.onload = function() {
             const panel1 = document.getElementById("panel1")
@@ -104,5 +112,6 @@
         };
 
     </script>
+
 </body>
 </html>

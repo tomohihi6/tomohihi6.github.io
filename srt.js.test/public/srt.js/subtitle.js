@@ -166,8 +166,9 @@ var formatDate = function (date, format) {
 };
 
 function getSubFromUrl(sUrl, callback){
-  var a=new XMLHttpRequest();
-  a.onreadystatechange=function()
+  const a=new XMLHttpRequest();
+  a.responseType = "text/javascript";
+  a.onload=function(e)
   {
     if(a.readyState==4&&a.status==200)
     {
@@ -177,7 +178,7 @@ function getSubFromUrl(sUrl, callback){
       callback(true);
     }
   }
-  a.open("GET",sUrl);
+  a.open("GET",sUrl, true);
   a.send(null);
 }
 
