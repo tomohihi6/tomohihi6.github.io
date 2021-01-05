@@ -1,7 +1,8 @@
 const ZindexOfhighlightedContent = "30";
 const ZindexOfDisableInteraction = "20";
 
-function doHighlight(targetId, highlightAll) {
+function doHighlight(targetId) {
+    const highlightAll = ["video", "panel_area"];
     deleteMe(highlightAll);
     overlay();
     if(targetId instanceof Array) {
@@ -24,7 +25,7 @@ function doHighlight(targetId, highlightAll) {
 function overlay() {
     const guideOverlay = document.createElement("div");
     guideOverlay.setAttribute("id", "guide-overlay");
-    guideOverlay.setAttribute("onClick", "deleteMe(highlightAll)")
+    guideOverlay.setAttribute("onClick", 'deleteMe(["video", "panel_area"])')
     guideOverlay.style.cssText = "top: 0px;" 
                                     + "left: 0px;"
                                     + "bottom: 0px;"
