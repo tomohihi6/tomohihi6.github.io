@@ -92,16 +92,16 @@ function onPlayerReady(event) {
   console.log(event.target.getVideoUrl())
   //console.log(event.target.getAvailablePlaybackRates());
 
+  document.getElementById("video-title").innerText = player.getVideoData().title;
+
   if (subUrl === "") {
     getSub(event.target.getVideoUrl());
   } else {
-    if (confirmExtSub() == true) {
       getSubFromUrl(subUrl, function(err) {
         if (err == false) {
           disableDropper();
         }
       });
-    }
   }
 }
 
