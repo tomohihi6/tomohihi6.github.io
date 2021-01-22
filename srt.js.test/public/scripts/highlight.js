@@ -2,7 +2,7 @@ const ZindexOfhighlightedContent = "30";
 const ZindexOfDisableInteraction = "20";
 
 function doHighlight(targetId) {
-    const highlightAll = ["video", "panel_area"];
+    const highlightAll = ["video", "panel_area", "console-container", "video-summary"];
     deleteMe(highlightAll);
     overlay();
     if(targetId instanceof Array) {

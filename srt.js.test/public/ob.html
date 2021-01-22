@@ -73,7 +73,13 @@
                                 <textarea id="all-source-code"></textarea>
                             </div>
                         </div>
-                       </div>
+                    </div>
+                    <div id="console-container">
+                        <div id="console-title">コンソール</div>
+                        <ul id="console">
+                        </ul>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -100,7 +106,7 @@
         let editor0 = CodeMirror.fromTextArea(document.getElementById("video-source-code"),option);
         editor0.setSize('100%', '100%')
 
-        obniz = new Obniz.M5StickC("9269-2634");
+        obniz = new Obniz.M5StickC("");
         obniz.onconnect = async function () {
             obniz.display.clear();
         };
