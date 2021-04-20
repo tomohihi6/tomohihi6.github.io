@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import '../utils/App.css';
 import { AddTaskBar } from '../components/AddTaskBar';
+import { Task } from '../components/Task';
 
 const App = () => {
   const [tab_value, setTabValue] = useState(0);
@@ -30,7 +31,7 @@ const App = () => {
         <AddTaskBar />
       </div>
       <TabPanel tab_value={tab_value} index={0}>
-        All
+        <Task />
       </TabPanel>
       <TabPanel tab_value={tab_value} index={1}>
         Active
