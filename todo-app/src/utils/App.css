@@ -1,6 +1,6 @@
 .App {
-  text-align: center;
   margin: 3vh auto;
+  width: 50%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
