@@ -11,11 +11,13 @@ import { Task } from '../components/Task';
 const App = () => {
   const [tab_index, setTabIndex] = useState(0);
   const [tasks, setTasks] = useState([]);
+  const active_tasks = tasks.filter((v) => !v.checked);
+  const completed_tasks = tasks.filter((v) => v.checked);
   const handleAddTask = (checked, texts, id) => {
     setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
   };
 
-  const handleTabChange = (event, newValue) => {
+  const handleTabChange = (_, newValue) => {
     setTabIndex(newValue);
   };
 
@@ -35,10 +37,14 @@ const App = () => {
         <AddTaskBar handleAddTask={handleAddTask} tasks={tasks} />
       </div>
 
-      <TabPanel tab_index={tab_index} index={0}></TabPanel>
-      <TabPanel tab_index={tab_index} index={1}></TabPanel>
+      <TabPanel tab_index={tab_index} index={0}>
+        {tasks.length !== 0 ? tasks.map((v) => <Task task={v} key={v.id} />) : null}
+      </TabPanel>
+      <TabPanel tab_index={tab_index} index={1}>
+        {active_tasks.length !== 0 ? active_tasks.map((v) => <Task task={v} key={v.id} />) : null}
+      </TabPanel>
       <TabPanel tab_index={tab_index} index={2}>
-        Complete
+        {completed_tasks.length !== 0 ? completed_tasks.map((v) => <Task task={v} key={v.id} />) : null}
       </TabPanel>
     </div>
   );
