@@ -9,10 +9,14 @@ import { AddTaskBar } from '../components/AddTaskBar';
 import { Task } from '../components/Task';
 
 const App = () => {
-  const [tab_value, setTabValue] = useState(0);
+  const [tab_index, setTabIndex] = useState(0);
+  const [tasks, setTasks] = useState([]);
+  const handleAddTask = (checked, texts, id) => {
+    setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
+  };
 
   const handleTabChange = (event, newValue) => {
-    setTabValue(newValue);
+    setTabIndex(newValue);
   };
 
   return (
@@ -21,32 +25,29 @@ const App = () => {
         <div style={{ fontSize: 36, fontFamily: 'Raleway', fontWeight: 'bold' }}>#todo</div>
       </header>
       <div style={{ width: 480, margin: '0 auto' }}>
-        <Tabs value={tab_value} textColor="primary" indicatorColor="primary" onChange={handleTabChange}>
+        <Tabs value={tab_index} textColor="primary" indicatorColor="primary" onChange={handleTabChange}>
           <Tab label="All"></Tab>
           <Tab label="Active"></Tab>
           <Tab label="Completed"></Tab>
         </Tabs>
       </div>
       <div style={{ margin: '18px auto', width: 480 }}>
-        <AddTaskBar />
+        <AddTaskBar handleAddTask={handleAddTask} tasks={tasks} />
       </div>
-      <TabPanel tab_value={tab_value} index={0}>
-        <Task />
-      </TabPanel>
-      <TabPanel tab_value={tab_value} index={1}>
-        Active
-      </TabPanel>
-      <TabPanel tab_value={tab_value} index={2}>
+
+      <TabPanel tab_index={tab_index} index={0}></TabPanel>
+      <TabPanel tab_index={tab_index} index={1}></TabPanel>
+      <TabPanel tab_index={tab_index} index={2}>
         Complete
       </TabPanel>
     </div>
   );
 };
 
-const TabPanel = ({ tab_value, index, children }) => {
+const TabPanel = ({ tab_index, index, children }) => {
   return (
-    <div role="tabpanel" hidden={tab_value !== index} style={{ width: 480, margin: '0 auto' }}>
-      {tab_value === index && (
+    <div role="tabpanel" hidden={tab_index !== index} style={{ width: 480, margin: '0 auto' }}>
+      {tab_index === index && (
         <Box p={3}>
           <Typography>{children}</Typography>
         </Box>
