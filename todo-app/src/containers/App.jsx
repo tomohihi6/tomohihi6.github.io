@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
@@ -10,19 +10,30 @@ import { AddTaskBar } from '../components/AddTaskBar';
 import { Task } from '../components/Task';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
+const APP_KEY = 'todo';
+
 const App = () => {
   const [tab_index, setTabIndex] = useState(0);
-  const [tasks, setTasks] = useState([]);
+  const fetchedTasks = localStorage.getItem(APP_KEY);
+  const [tasks, setTasks] = fetchedTasks ? useState(JSON.parse(fetchedTasks)) : useState([]);
+  console.log(tasks);
   const active_tasks = tasks.filter((v) => !v.checked);
   const completed_tasks = tasks.filter((v) => v.checked);
-  const handleAddTask = (checked, texts, id) => {
-    setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
-  };
+
+  useEffect(() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(tasks));
+  }, [tasks]);
+
+  const handleAddTask = useCallback(
+    (checked, texts, id) => {
+      setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
+    },
+    [tasks]
+  );
+
   const handleDeleteTask = (v) => {
     const tmp_tasks = [...tasks];
-    console.log(tmp_tasks);
     const idx = tmp_tasks.indexOf(v);
-    console.log(idx);
     if (!idx) {
       tmp_tasks.splice(idx, 1);
     }
