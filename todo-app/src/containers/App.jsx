@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
@@ -15,27 +15,36 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
   const active_tasks = tasks.filter((v) => !v.checked);
   const completed_tasks = tasks.filter((v) => v.checked);
-  const handleAddTask = (checked, texts, id) => {
-    setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
-  };
-  const handleDeleteTask = (v) => {
-    const tmp_tasks = [...tasks];
-    console.log(tmp_tasks);
-    const idx = tmp_tasks.indexOf(v);
-    console.log(idx);
-    if (!idx) {
-      tmp_tasks.splice(idx, 1);
-    }
-    setTasks(tmp_tasks);
-  };
+  const handleAddTask = useCallback(
+    (checked, texts, id) => {
+      setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
+    },
+    [tasks]
+  );
+  const handleDeleteTask = useCallback(
+    (v) => {
+      const tmp_tasks = [...tasks];
+      console.log(tmp_tasks);
+      const idx = tmp_tasks.indexOf(v);
+      console.log(idx);
+      if (idx >= 0) {
+        tmp_tasks.splice(idx, 1);
+      }
+      setTasks(tmp_tasks);
+    },
+    [tasks]
+  );
 
-  const handleDleteAllCompletedTasks = () => {
+  const handleDleteAllCompletedTasks = useCallback(() => {
     setTasks([...active_tasks]);
-  };
+  }, [active_tasks]);
 
-  const handleTabChange = (_, newValue) => {
-    setTabIndex(newValue);
-  };
+  const handleTabChange = useCallback(
+    (_, newValue) => {
+      setTabIndex(newValue);
+    },
+    [tab_index]
+  );
 
   return (
     <div className="App">
