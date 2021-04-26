@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import React, { useState, useEffect, useCallback } from 'react';
 import React, { useState, useCallback } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -10,17 +11,26 @@ import { AddTaskBar } from '../components/AddTaskBar';
 import { Task } from '../components/Task';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
+const APP_KEY = 'todo';
+
 const App = () => {
   const [tab_index, setTabIndex] = useState(0);
-  const [tasks, setTasks] = useState([]);
+  const fetchedTasks = localStorage.getItem(APP_KEY);
+  const [tasks, setTasks] = fetchedTasks ? useState(JSON.parse(fetchedTasks)) : useState([]);
   const active_tasks = tasks.filter((v) => !v.checked);
   const completed_tasks = tasks.filter((v) => v.checked);
+
+  useEffect(() => {
+    localStorage.setItem(APP_KEY, JSON.stringify(tasks));
+  }, [tasks]);
+
   const handleAddTask = useCallback(
     (checked, texts, id) => {
       setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
     },
     [tasks]
   );
+
   const handleDeleteTask = useCallback(
     (v) => {
       const tmp_tasks = [...tasks];
