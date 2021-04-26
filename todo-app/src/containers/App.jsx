@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import '../utils/App.css';
 import { AddTaskBar } from '../components/AddTaskBar';
 import { Task } from '../components/Task';
+import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 
 const App = () => {
   const [tab_index, setTabIndex] = useState(0);
@@ -25,6 +27,10 @@ const App = () => {
       tmp_tasks.splice(idx, 1);
     }
     setTasks(tmp_tasks);
+  };
+
+  const handleDleteAllCompletedTasks = () => {
+    setTasks([...active_tasks]);
   };
 
   const handleTabChange = (_, newValue) => {
@@ -60,6 +66,18 @@ const App = () => {
           ? completed_tasks.map((v) => <Task task={v} key={v.id} handleDeleteTask={handleDeleteTask} />)
           : null}
       </TabPanel>
+      {tab_index === 2 ? (
+        <div
+          style={{ display: 'flex', flexDirection: 'row-reverse', paddingRight: 32 }}
+          onClick={handleDleteAllCompletedTasks}
+        >
+          <Button variant="contained" color="secondary" startIcon={<DeleteOutlineIcon />}>
+            <div style={{ fontFamily: 'Montserrat', fontWeight: 600, fontSize: 12, lineHeight: '15px' }}>
+              delete all
+            </div>
+          </Button>
+        </div>
+      ) : null}
     </div>
   );
 };
