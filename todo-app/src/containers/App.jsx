@@ -23,7 +23,7 @@ const App = () => {
     console.log(tmp_tasks);
     const idx = tmp_tasks.indexOf(v);
     console.log(idx);
-    if (!idx) {
+    if (idx >= 0) {
       tmp_tasks.splice(idx, 1);
     }
     setTasks(tmp_tasks);
