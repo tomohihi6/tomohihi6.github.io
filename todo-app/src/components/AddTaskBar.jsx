@@ -6,6 +6,7 @@ let i = 0;
 
 export const AddTaskBar = ({ handleAddTask }) => {
   const taskTextsRef = useRef(null);
+
   return (
     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div style={{ width: '80%' }}>

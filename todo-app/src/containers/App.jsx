@@ -16,6 +16,16 @@ const App = () => {
   const handleAddTask = (checked, texts, id) => {
     setTasks([...tasks, { checked: checked, texts: texts, id: id }]);
   };
+  const handleDeleteTask = (v) => {
+    const tmp_tasks = [...tasks];
+    console.log(tmp_tasks);
+    const idx = tmp_tasks.indexOf(v);
+    console.log(idx);
+    if (!idx) {
+      tmp_tasks.splice(idx, 1);
+    }
+    setTasks(tmp_tasks);
+  };
 
   const handleTabChange = (_, newValue) => {
     setTabIndex(newValue);
@@ -34,17 +44,21 @@ const App = () => {
         </Tabs>
       </div>
       <div style={{ margin: '18px auto', width: 480 }}>
-        <AddTaskBar handleAddTask={handleAddTask} tasks={tasks} />
+        <AddTaskBar handleAddTask={handleAddTask} />
       </div>
 
       <TabPanel tab_index={tab_index} index={0}>
-        {tasks.length !== 0 ? tasks.map((v) => <Task task={v} key={v.id} />) : null}
+        {tasks.length !== 0 ? tasks.map((v) => <Task task={v} key={v.id} handleDeleteTask={handleDeleteTask} />) : null}
       </TabPanel>
       <TabPanel tab_index={tab_index} index={1}>
-        {active_tasks.length !== 0 ? active_tasks.map((v) => <Task task={v} key={v.id} />) : null}
+        {active_tasks.length !== 0
+          ? active_tasks.map((v) => <Task task={v} key={v.id} handleDeleteTask={handleDeleteTask} />)
+          : null}
       </TabPanel>
       <TabPanel tab_index={tab_index} index={2}>
-        {completed_tasks.length !== 0 ? completed_tasks.map((v) => <Task task={v} key={v.id} />) : null}
+        {completed_tasks.length !== 0
+          ? completed_tasks.map((v) => <Task task={v} key={v.id} handleDeleteTask={handleDeleteTask} />)
+          : null}
       </TabPanel>
     </div>
   );
